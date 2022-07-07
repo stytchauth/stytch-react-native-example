@@ -1,21 +1,52 @@
-## Stytch React Native SDK Demo
+# Stytch + Expo example app
+![expoExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
 
-This is a demo app that uses the Stytch SDKs in a React Native app.  This app was created with `npx react-native init <project>`
+## Overview
+This example app includes a mobile application powered by React Native. This app was created with `npx react-native init`
 
-## Configuration
+This application demonstrates a mobile friendly signup and sign in flow powered by Stytch. In this example the following Stytch products are used:
+1. [SMS passcodes](https://stytch.com/products/sms-passcodes)
+2. [Session management](https://stytch.com/products/session-management)
 
-In order to test the OTP functionality in this app, there are a couple things you need to do to configure your app.
+## Running locally
 
- 1. Add `stytch.rn.test` as a Bundle ID to your project in the [Stytch SDK Configuration Dashboard](https://stytch.com/dashboard/sdk-configuration).
- 2. Enable OTP in that same dashboard.
- 3. Add your project's public token on line 13 in `App.tsx`
+**Create a Stytch account**
 
- After this, you should be able to run the app and test OTP functionality by running the app with 
- ```bash
- npm install
- react-native run-ios|andoird
- ```
+First you will need to sign up and create a new project in [Stytch](https://stytch.com/). Then run the following commands in the terminal of your choice.
 
- ## Docs
+**Stytch Dashboard Configuration**
 
- For more information on the Stytch React Native SDK, check out [our docs](https://stytch.com/docs/sdks/react-native-sdk)
+You'll need to take some steps in the [Stytch Dashboard SDK Configuration](https://stytch.com/dashboard/sdk-configuration) in order to enable your project to use the SDK.
+
+1. Enable SDK for your project
+2. Add `stytch.rn.test` as a Bundle ID
+3. Enable SMS Passcodes (OTP)
+
+**Clone repository**
+```bash
+git clone https://github.com/stytchauth/stytch-react-native-integration.git
+cd stytch-react-native-integration
+```
+
+Next we need to create a `.env` file to store our API keys. Modify and run the command below to create a `.env` file using the API keys found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
+```bash
+# in ./stytch-react-native-integration
+echo "STYTCH_PUBLIC_TOKEN=GET_FROM_STYTCH_DASHBOARD" > .env
+```
+
+**Install Dependencies**
+```bash
+npm install
+cd ios
+pod install
+cd ..
+```
+
+**Start Application**
+
+Use XCode or Android Studio to build and run the application.
+
+## Documentation
+Learn more about the Stytch products used in this example app:
+- [SMS OTP API documentation](https://stytch.com/docs/api/sms-otp-overview)
+- [React Native SDK](https://stytch.com/docs/sdks/react-native-sdk)
