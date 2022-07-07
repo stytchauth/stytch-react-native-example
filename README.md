@@ -44,7 +44,11 @@ cd ..
 
 **Start Application**
 
-Use XCode or Android Studio to build and run the application.
+Note that your development environment must be configured to run react native applications before you can run this demo. For more information, see the [React Native Doc](https://reactnative.dev/docs/environment-setup)
+
+```bash
+react-native run-ios|android
+```
 
 ## Documentation
 Learn more about the Stytch products used in this example app:
