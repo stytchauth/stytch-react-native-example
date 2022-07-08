@@ -28,7 +28,7 @@ git clone https://github.com/stytchauth/stytch-react-native-integration.git
 cd stytch-react-native-integration
 ```
 
-Next we need to create a `.env` file to store our API keys. Modify and run the command below to create a `.env` file using the API keys found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
+Next we need to create a `.env` file to store our API keys. Modify and run the command below to create a `.env` file. Then update `STYTCH_PUBLIC_TOKEN` with the API key found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
 ```bash
 # in ./stytch-react-native-integration
 echo "STYTCH_PUBLIC_TOKEN=GET_FROM_STYTCH_DASHBOARD" > .env
@@ -44,7 +44,7 @@ cd ..
 
 **Start Application**
 
-Note that your development environment must be configured to run react native applications before you can run this demo. For more information, see the [React Native Doc](https://reactnative.dev/docs/environment-setup)
+Note that your development environment must be configured to run react native applications before you can run this demo. For more information, see the [React Native docs](https://reactnative.dev/docs/environment-setup) for environment setup.
 
 ```bash
 react-native run-ios|android
