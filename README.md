@@ -1,5 +1,5 @@
-# Stytch + Expo example app
-![expoExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
+# Stytch + React Native example app
+![reactNativeExampleApp](https://user-images.githubusercontent.com/100632220/169424762-67caa828-2b05-43f7-9055-067014676316.png)
 
 ## Overview
 This example app includes a mobile application powered by React Native. This app was created with `npx react-native init`
