@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface RNVanillaDemoTests : XCTestCase
+@interface StytchDemoTests : XCTestCase
 
 @end
 
-@implementation RNVanillaDemoTests
+@implementation StytchDemoTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

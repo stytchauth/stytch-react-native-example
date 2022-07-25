@@ -1,5 +1,4 @@
 import React from 'react';
-import type { Node } from 'react';
 import { ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage } from "./pages";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -19,7 +18,7 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const HomeScreen: () => Node = () => {
+const HomeScreen = () => {
   const user = useStytchUser();
 
   return (
@@ -55,7 +54,7 @@ const HomeScreen: () => Node = () => {
   );
 }
 
-const App: () => Node = () => {
+const App = () => {
   const stytch = new StytchClient(Config.STYTCH_PUBLIC_TOKEN);
   return (
     <StytchProvider stytch={stytch}>
