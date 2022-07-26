@@ -1,4 +1,4 @@
-package com.stytchdemo;
+package stytch.rn.test;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

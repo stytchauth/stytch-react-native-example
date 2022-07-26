@@ -1,4 +1,4 @@
-package com.stytchdemo;
+package stytch.rn.test;
 
 import android.app.Application;
 import android.content.Context;
