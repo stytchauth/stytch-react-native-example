@@ -16,7 +16,7 @@ function ProfilePage() {
 
   const checkKeystoreAvailable = async () => {
     await stytch.biometrics
-      .isKeystoreAvailable()
+      .keystoreAvailable()
       .then(resp => {
         setKeystoreAvailable(resp);
       })
