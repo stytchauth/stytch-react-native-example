@@ -10,8 +10,20 @@ function ProfilePage() {
     isBiometricsRegistrationAvailable,
     setBiometricsRegistrationAvailable,
   ] = useState(false);
+  const [isKeystoreAvailable, setKeystoreAvailable] = useState(false);
 
   const [response, setResponse] = useState('');
+
+  const checkKeystoreAvailable = async () => {
+    await stytch.biometrics
+      .isKeystoreAvailable()
+      .then(resp => {
+        setKeystoreAvailable(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   const checkBiometricsRegistration = async () => {
     await stytch.biometrics
@@ -66,6 +78,10 @@ function ProfilePage() {
   };
 
   useEffect(() => {
+    checkKeystoreAvailable();
+  }, []);
+
+  useEffect(() => {
     checkBiometricsRegistration();
   }, [registerBiometrics, deleteBiometricsDeviceRegistration]);
 
@@ -79,13 +95,15 @@ function ProfilePage() {
           app on Github to learn how to implement this yourself!
         </Text>
       </View>
-      <View>
-        <TouchableOpacity
-          style={sharedStyles.buttonDark}
-          onPress={registerBiometrics}>
-          <Text style={sharedStyles.buttonTextDark}>Register Biometrics</Text>
-        </TouchableOpacity>
-      </View>
+      {isKeystoreAvailable && (
+        <View>
+          <TouchableOpacity
+            style={sharedStyles.buttonDark}
+            onPress={registerBiometrics}>
+            <Text style={sharedStyles.buttonTextDark}>Register Biometrics</Text>
+          </TouchableOpacity>
+        </View>
+      )}
       {isBiometricsRegistrationAvailable && (
         <>
           <View>
