@@ -1,37 +1,73 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import sharedStyles from './shared';
 import {useStytch} from '@stytch/react-native-testing';
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 
 function ProfilePage() {
   const stytch = useStytch();
 
-  const registerBiometrics = () => {
-    stytch.biometrics
-      .register('Register Your Biometric Factor')
-      .then((resp: any) => {
-        console.log(resp);
+  const [
+    isBiometricsRegistrationAvailable,
+    setBiometricsRegistrationAvailable,
+  ] = useState(false);
+
+  const [response, setResponse] = useState('');
+
+  const checkBiometricsRegistration = async () => {
+    await stytch.biometrics
+      .registrationAvailable()
+      .then(resp => {
+        setBiometricsRegistrationAvailable(resp);
       })
-      .catch((err: any) => {
+      .catch(err => {
         console.log(err);
       });
   };
 
-  const authBiometrics = () => {
+  const registerBiometrics = () => {
+    setResponse('');
     stytch.biometrics
-      .authenticate('Register Your Biometric Factor', 60)
-      .then((resp: any) => {
-        console.log(resp);
+      .register({
+        prompt: 'Register Biometrics',
       })
-      .catch((err: any) => {
-        console.log(err);
+      .then(resp => {
+        setResponse(JSON.stringify(resp));
+      })
+      .catch(err => {
+        setResponse(JSON.stringify(err));
+      });
+  };
+
+  const authenticateBiometrics = () => {
+    setResponse('');
+    stytch.biometrics
+      .authenticate({
+        prompt: 'Authenticate with Biometrics',
+        sessionDurationMinutes: 60,
+      })
+      .then(resp => {
+        setResponse(JSON.stringify(resp));
+      })
+      .catch(err => {
+        setResponse(JSON.stringify(err));
       });
   };
 
   const deleteBiometricsDeviceRegistration = async () => {
-    const response = await stytch.biometrics.removeRegistration();
-    console.log(response);
+    setResponse('');
+    stytch.biometrics
+      .removeRegistration()
+      .then(resp => {
+        setResponse(JSON.stringify(resp));
+      })
+      .catch(err => {
+        setResponse(JSON.stringify(err));
+      });
   };
+
+  useEffect(() => {
+    checkBiometricsRegistration();
+  }, [registerBiometrics, deleteBiometricsDeviceRegistration]);
 
   return (
     <View style={sharedStyles.container}>
@@ -43,30 +79,37 @@ function ProfilePage() {
           app on Github to learn how to implement this yourself!
         </Text>
       </View>
-      <View style={{padding: 10, marginBottom: 10}}>
+      <View>
         <TouchableOpacity
           style={sharedStyles.buttonDark}
           onPress={registerBiometrics}>
-          <Text style={sharedStyles.buttonTextDark}>
-            Register with Biometrics
-          </Text>
+          <Text style={sharedStyles.buttonTextDark}>Register Biometrics</Text>
         </TouchableOpacity>
       </View>
-      <View style={{padding: 10, marginBottom: 10}}>
-        <TouchableOpacity
-          style={sharedStyles.buttonDark}
-          onPress={authBiometrics}>
-          <Text style={sharedStyles.buttonTextDark}>Auth with Biometrics</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{padding: 10, marginBottom: 10}}>
-        <TouchableOpacity
-          style={sharedStyles.buttonDark}
-          onPress={deleteBiometricsDeviceRegistration}>
-          <Text style={sharedStyles.buttonTextDark}>
-            Delete Biometrics Registration
-          </Text>
-        </TouchableOpacity>
+      {isBiometricsRegistrationAvailable && (
+        <>
+          <View>
+            <TouchableOpacity
+              style={sharedStyles.buttonDark}
+              onPress={authenticateBiometrics}>
+              <Text style={sharedStyles.buttonTextDark}>
+                Authenticate with Biometrics
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity
+              style={sharedStyles.buttonDark}
+              onPress={deleteBiometricsDeviceRegistration}>
+              <Text style={sharedStyles.buttonTextDark}>
+                Delete Biometrics Registration
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
+      <View>
+        <Text>{response}</Text>
       </View>
       <TouchableOpacity
         style={[sharedStyles.buttonDark]}
