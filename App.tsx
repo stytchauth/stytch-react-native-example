@@ -7,7 +7,7 @@ import {
   StytchClient,
   StytchProvider,
   useStytchUser,
-} from '@stytch/react-native-testing';
+} from '@stytch/react-native';
 import Config from 'react-native-config';
 
 export type RootStackParamList = {

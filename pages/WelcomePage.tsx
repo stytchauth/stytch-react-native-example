@@ -1,7 +1,7 @@
 import {Alert, Image, Text, TouchableOpacity, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../App';
-import {useStytch} from '@stytch/react-native-testing';
+import {useStytch} from '@stytch/react-native';
 import styles from './shared';
 import React, {useState, useEffect} from 'react';
 

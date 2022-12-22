@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {RootStackParamList} from '../App';
 import sharedStyles from './shared';
-import {useStytch} from '@stytch/react-native-testing';
+import {useStytch} from '@stytch/react-native';
 
 type NavProps = NativeStackScreenProps<RootStackParamList, 'SendOTP'>;
 type Props = NavProps & {

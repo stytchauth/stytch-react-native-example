@@ -1,6 +1,6 @@
 import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import sharedStyles from './shared';
-import {useStytch} from '@stytch/react-native-testing';
+import {useStytch} from '@stytch/react-native';
 import React, {useState, useEffect} from 'react';
 
 function ProfilePage() {
