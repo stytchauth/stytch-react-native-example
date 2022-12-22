@@ -1,9 +1,13 @@
 import React from 'react';
-import { ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage } from "./pages";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage} from './pages';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import { StytchClient, StytchProvider, useStytchUser } from '@stytch/react-native';
+import {
+  StytchClient,
+  StytchProvider,
+  useStytchUser,
+} from '@stytch/react-native';
 import Config from 'react-native-config';
 
 export type RootStackParamList = {
@@ -28,31 +32,31 @@ const HomeScreen = () => {
           <Stack.Screen
             name="Profile"
             component={ProfilePage}
-            options={{ headerShown: false }}
+            options={{headerShown: false}}
           />
         ) : (
           <>
             <Stack.Screen
               name="Welcome"
               component={WelcomePage}
-              options={{ headerShown: false }}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="SendOTP"
               component={SendOTPPage}
-              options={{ headerShown: false }}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="VerifyOTP"
               component={VerifyOTPPage}
-              options={{ headerShown: false }}
+              options={{headerShown: false}}
             />
           </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 const App = () => {
   const stytch = new StytchClient(Config.STYTCH_PUBLIC_TOKEN);
@@ -60,7 +64,7 @@ const App = () => {
     <StytchProvider stytch={stytch}>
       <HomeScreen />
     </StytchProvider>
-  )
-}
+  );
+};
 
 export default App;

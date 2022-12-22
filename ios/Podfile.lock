@@ -298,7 +298,9 @@ PODS:
     - React-Core
   - RNGestureHandler (2.1.3):
     - React-Core
-  - RNReanimated (2.3.3):
+  - RNKeychain (8.1.1):
+    - React-Core
+  - RNReanimated (2.13.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -306,7 +308,6 @@ PODS:
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
-    - React
     - React-callinvoker
     - React-Core
     - React-Core/DevSupport
@@ -329,6 +330,8 @@ PODS:
   - RNScreens (3.15.0):
     - React-Core
     - React-RCTImage
+  - StytchReactNativeModules (0.1.1):
+    - React-Core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -369,8 +372,10 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "StytchReactNativeModules (from `../node_modules/@stytch/react-native-modules`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -450,10 +455,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNKeychain:
+    :path: "../node_modules/react-native-keychain"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  StytchReactNativeModules:
+    :path: "../node_modules/@stytch/react-native-modules"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -495,10 +504,12 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNDeviceInfo: 1e3f62b9ec32f7754fac60bd06b8f8a27124e7f0
   RNGestureHandler: e1099204721a17a89c81fcd1cc2e92143dc040fb
-  RNReanimated: 6d3dc023cec9fd29950baf8cc5f4d0592a623c01
+  RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
+  RNReanimated: f0d66bda3d074c43c72a18f4fd4f4c26687bc1fd
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
+  StytchReactNativeModules: 6d8af20708eb4ab922d764b6b0e0a19e61d028ea
   Yoga: 44c64131616253fa83366295acdbce3d14926041
 
-PODFILE CHECKSUM: df2c1ce9aa0668a60950b92b305a2f3c4e251036
+PODFILE CHECKSUM: 267e9fc56e9dcff6fbaf7306153348a619552602
 
 COCOAPODS: 1.11.3

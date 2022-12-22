@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -9,24 +9,26 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-} from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../App";
-import sharedStyles from "./shared";
-import { useStytch } from '@stytch/react-native'
+} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../App';
+import sharedStyles from './shared';
+import {useStytch} from '@stytch/react-native';
 
-type Props = NativeStackScreenProps<RootStackParamList, "VerifyOTP">;
+type Props = NativeStackScreenProps<RootStackParamList, 'VerifyOTP'>;
 
-function VerifyOTPPage({ navigation, route }: Props) {
+function VerifyOTPPage({navigation, route}: Props) {
   const stytch = useStytch();
-  const { methodId, phoneNumber } = route.params;
-  const [otp, setOtp] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const {methodId, phoneNumber} = route.params;
+  const [otp, setOtp] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onPressNext = async () => {
-    const res = await stytch.otps.authenticate(otp, methodId, { session_duration_minutes: 60 });
+    const res = await stytch.otps.authenticate(otp, methodId, {
+      session_duration_minutes: 60,
+    });
     if (res.status_code !== 200) {
-      setErrorMessage('Unable to authenticate, please try again.')
+      setErrorMessage('Unable to authenticate, please try again.');
     }
     // Successful authentication here will cause user to be populated in App.tsx and trigger redirect.
   };
@@ -34,11 +36,10 @@ function VerifyOTPPage({ navigation, route }: Props) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
         style={sharedStyles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View>
           <Text style={sharedStyles.header}>
-            Enter the code sent to{"\n"}
+            Enter the code sent to{'\n'}
             {phoneNumber}
           </Text>
           <TextInput
@@ -46,11 +47,10 @@ function VerifyOTPPage({ navigation, route }: Props) {
             style={styles.input}
             textContentType="oneTimeCode"
             value={otp}
-            onChangeText={(text) => setOtp(text)}
+            onChangeText={text => setOtp(text)}
             maxLength={6}
             caretHidden
-            autoFocus
-          ></TextInput>
+            autoFocus></TextInput>
           {errorMessage.length > 0 && (
             <Text style={styles.errorText}>Error: {errorMessage}</Text>
           )}
@@ -58,8 +58,7 @@ function VerifyOTPPage({ navigation, route }: Props) {
         <View style={[styles.row]}>
           <TouchableOpacity
             style={sharedStyles.buttonLight}
-            onPress={() => navigation.navigate("SendOTP")}
-          >
+            onPress={() => navigation.navigate('SendOTP')}>
             <Text style={sharedStyles.buttonTextLight}>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -69,8 +68,7 @@ function VerifyOTPPage({ navigation, route }: Props) {
                 : [sharedStyles.buttonDark]
             }
             onPress={onPressNext}
-            disabled={otp.length !== 6}
-          >
+            disabled={otp.length !== 6}>
             <Text style={[sharedStyles.buttonTextDark]}>Next</Text>
           </TouchableOpacity>
         </View>
@@ -81,9 +79,9 @@ function VerifyOTPPage({ navigation, route }: Props) {
 
 const styles = StyleSheet.create({
   row: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   input: {
@@ -93,17 +91,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 36,
     marginBottom: 10,
-    width: "75%",
-    alignSelf: "center",
+    width: '75%',
+    alignSelf: 'center',
     letterSpacing: 15,
-    textAlign: "center",
+    textAlign: 'center',
     borderRadius: 3,
   },
   errorText: {
     marginTop: 10,
-    color: "#892426",
-    fontWeight: "600",
-    fontFamily: "System",
+    color: '#892426',
+    fontWeight: '600',
+    fontFamily: 'System',
   },
 });
 

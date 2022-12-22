@@ -1,5 +1,5 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useState } from "react";
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import React, {useState} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -10,27 +10,26 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
   View,
-} from "react-native";
-import { RootStackParamList } from "../App";
-import sharedStyles from "./shared";
-import { useStytch } from '@stytch/react-native';
+} from 'react-native';
+import {RootStackParamList} from '../App';
+import sharedStyles from './shared';
+import {useStytch} from '@stytch/react-native';
 
-type NavProps = NativeStackScreenProps<RootStackParamList, "SendOTP">;
+type NavProps = NativeStackScreenProps<RootStackParamList, 'SendOTP'>;
 type Props = NavProps & {
   setMethodId: (methodId: string) => void;
-}
+};
 
-function SendOTPPage({ navigation }: Props) {
+function SendOTPPage({navigation}: Props) {
   const stytch = useStytch();
-  const [phoneInput, setPhoneInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [waitingForResp, setWaitingForResp] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <KeyboardAvoidingView
-        style={[sharedStyles.container, { padding: 20 }]}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
+        style={[sharedStyles.container, {padding: 20}]}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View>
           <Text style={sharedStyles.header}>Enter your mobile number</Text>
           <TextInput
@@ -39,9 +38,8 @@ function SendOTPPage({ navigation }: Props) {
             dataDetectorTypes="phoneNumber"
             textContentType="telephoneNumber"
             value={phoneInput}
-            onChangeText={(text) => setPhoneInput(text)}
-            autoFocus
-          ></TextInput>
+            onChangeText={text => setPhoneInput(text)}
+            autoFocus></TextInput>
           <Text style={[styles.helperText]}>
             This demo is currently limited to phone numbers with the +1
             international code (United States).
@@ -53,8 +51,7 @@ function SendOTPPage({ navigation }: Props) {
         <View style={[styles.row]}>
           <TouchableOpacity
             style={sharedStyles.buttonLight}
-            onPress={() => navigation.navigate("Welcome")}
-          >
+            onPress={() => navigation.navigate('Welcome')}>
             <Text style={sharedStyles.buttonTextLight}>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -73,7 +70,7 @@ function SendOTPPage({ navigation }: Props) {
                 } else {
                   // Move to next page
                   setWaitingForResp(false);
-                  navigation.navigate("VerifyOTP", {
+                  navigation.navigate('VerifyOTP', {
                     phoneNumber: phoneInput,
                     methodId: resp.method_id,
                   });
@@ -82,8 +79,7 @@ function SendOTPPage({ navigation }: Props) {
                 console.error(e);
               }
             }}
-            disabled={waitingForResp}
-          >
+            disabled={waitingForResp}>
             <Text style={sharedStyles.buttonTextDark}>Next</Text>
           </TouchableOpacity>
         </View>
@@ -102,19 +98,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   row: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   helperText: {
-    color: "#8296A1",
+    color: '#8296A1',
   },
   errorText: {
     marginTop: 10,
-    color: "#892426",
-    fontWeight: "600",
-    fontFamily: "System",
+    color: '#892426',
+    fontWeight: '600',
+    fontFamily: 'System',
   },
 });
 
