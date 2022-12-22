@@ -292,8 +292,6 @@ PODS:
     - React-jsi (= 0.69.3)
     - React-logger (= 0.69.3)
     - React-perflogger (= 0.69.3)
-  - ReactNativeBiometrics (0.0.8):
-    - React-Core
   - RNCMaskedView (0.1.11):
     - React
   - RNDeviceInfo (9.0.2):
@@ -332,6 +330,8 @@ PODS:
   - RNScreens (3.15.0):
     - React-Core
     - React-RCTImage
+  - StytchReactNativeModules (0.0.9):
+    - React-Core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -369,13 +369,13 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "ReactNativeBiometrics (from `../node_modules/@stytch/react-native-biometrics`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "StytchReactNativeModules (from `../node_modules/@stytch/react-native-modules`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -449,8 +449,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  ReactNativeBiometrics:
-    :path: "../node_modules/@stytch/react-native-biometrics"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
   RNDeviceInfo:
@@ -463,6 +461,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  StytchReactNativeModules:
+    :path: "../node_modules/@stytch/react-native-modules"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -501,13 +501,13 @@ SPEC CHECKSUMS:
   React-RCTVibration: dd8099eb46e9cee4692934bc8cbe5e9a4f5e8d31
   React-runtimeexecutor: 607eb048e22a16388c908ee1f6644200e8d1e19b
   ReactCommon: af7636436b382db7cde4583bbd642f0978e6e3ed
-  ReactNativeBiometrics: 764ca02244944a3b772dbb2d43ea91ad4c9ef5a2
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNDeviceInfo: 1e3f62b9ec32f7754fac60bd06b8f8a27124e7f0
   RNGestureHandler: e1099204721a17a89c81fcd1cc2e92143dc040fb
   RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
   RNReanimated: f0d66bda3d074c43c72a18f4fd4f4c26687bc1fd
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
+  StytchReactNativeModules: daf47969fbe61b170960bcb85e5f450d001e96d1
   Yoga: 44c64131616253fa83366295acdbce3d14926041
 
 PODFILE CHECKSUM: 267e9fc56e9dcff6fbaf7306153348a619552602

@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import sharedStyles from './shared';
 import {useStytch} from '@stytch/react-native-testing';
 import React, {useState, useEffect} from 'react';
@@ -6,84 +6,82 @@ import React, {useState, useEffect} from 'react';
 function ProfilePage() {
   const stytch = useStytch();
 
-  const [
-    isBiometricsRegistrationAvailable,
-    setBiometricsRegistrationAvailable,
-  ] = useState(false);
   const [isKeystoreAvailable, setKeystoreAvailable] = useState(false);
+  const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
+  const [sensorType, setSensorType] = useState('none');
 
-  const [response, setResponse] = useState('');
-
-  const checkKeystoreAvailable = async () => {
-    await stytch.biometrics
-      .keystoreAvailable()
-      .then(resp => {
-        setKeystoreAvailable(resp);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  const checkKeystoreAvailable = () => {
+    stytch.biometrics.isKeystoreAvailable().then(resp => {
+      setKeystoreAvailable(resp);
+    });
   };
 
-  const checkBiometricsRegistration = async () => {
-    await stytch.biometrics
-      .registrationAvailable()
-      .then(resp => {
-        setBiometricsRegistrationAvailable(resp);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  const checkBiometricRegistration = () => {
+    stytch.biometrics.isRegistrationAvailable().then(resp => {
+      setBiometricRegistration(resp);
+    });
   };
 
-  const registerBiometrics = () => {
-    setResponse('');
+  const checkSensor = () => {
+    stytch.biometrics
+      .getSensor()
+      .then(resp => {
+        const {biometryType} = resp;
+        setSensorType(biometryType);
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    checkSensor();
+    checkKeystoreAvailable();
+    checkBiometricRegistration();
+  });
+
+  const registerBiometrics = async () => {
     stytch.biometrics
       .register({
-        prompt: 'Register Biometrics',
+        prompt: 'Register biometrics',
+        allowDeviceCredentials: true,
+        allowFallbackToCleartext: false,
+        cancelButtonText: 'Cancel reg',
       })
       .then(resp => {
-        setResponse(JSON.stringify(resp));
+        Alert.alert('Register successful', JSON.stringify(resp));
+        checkBiometricRegistration();
       })
       .catch(err => {
-        setResponse(JSON.stringify(err));
+        Alert.alert('Register unsuccessful', err.message);
       });
   };
 
   const authenticateBiometrics = () => {
-    setResponse('');
     stytch.biometrics
       .authenticate({
-        prompt: 'Authenticate with Biometrics',
+        prompt: 'Authenticate biometrics',
         sessionDurationMinutes: 60,
+        allowDeviceCredentials: true,
+        cancelButtonText: 'Cancel Auth',
       })
       .then(resp => {
-        setResponse(JSON.stringify(resp));
+        Alert.alert('Authentication successful', JSON.stringify(resp));
       })
       .catch(err => {
-        setResponse(JSON.stringify(err));
+        Alert.alert('Authentication unsuccessful', err.message);
       });
   };
 
-  const deleteBiometricsDeviceRegistration = async () => {
-    setResponse('');
+  const deleteBiometrics = () => {
     stytch.biometrics
       .removeRegistration()
-      .then(resp => {
-        setResponse(JSON.stringify(resp));
+      .then(() => {
+        Alert.alert('Deletion successful');
+        checkBiometricRegistration();
       })
       .catch(err => {
-        setResponse(JSON.stringify(err));
+        Alert.alert('Deletion unsuccessful', err.message);
       });
   };
-
-  useEffect(() => {
-    checkKeystoreAvailable();
-  }, []);
-
-  useEffect(() => {
-    checkBiometricsRegistration();
-  }, [registerBiometrics, deleteBiometricsDeviceRegistration]);
 
   return (
     <View style={sharedStyles.container}>
@@ -95,6 +93,9 @@ function ProfilePage() {
           app on Github to learn how to implement this yourself!
         </Text>
       </View>
+      <View>
+        <Text>Biometry type available: {sensorType}</Text>
+      </View>
       {isKeystoreAvailable && (
         <View>
           <TouchableOpacity
@@ -104,30 +105,25 @@ function ProfilePage() {
           </TouchableOpacity>
         </View>
       )}
-      {isBiometricsRegistrationAvailable && (
-        <>
-          <View>
-            <TouchableOpacity
-              style={sharedStyles.buttonDark}
-              onPress={authenticateBiometrics}>
-              <Text style={sharedStyles.buttonTextDark}>
-                Authenticate with Biometrics
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity
-              style={sharedStyles.buttonDark}
-              onPress={deleteBiometricsDeviceRegistration}>
-              <Text style={sharedStyles.buttonTextDark}>
-                Delete Biometrics Registration
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </>
+      {hasBiometricRegistration && (
+        <View>
+          <TouchableOpacity
+            style={sharedStyles.buttonDark}
+            onPress={authenticateBiometrics}>
+            <Text style={sharedStyles.buttonTextDark}>
+              Authenticate with Biometrics
+            </Text>
+          </TouchableOpacity>
+        </View>
       )}
       <View>
-        <Text>{response}</Text>
+        <TouchableOpacity
+          style={sharedStyles.buttonDark}
+          onPress={deleteBiometrics}>
+          <Text style={sharedStyles.buttonTextDark}>
+            Delete Biometrics Registration
+          </Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity
         style={[sharedStyles.buttonDark]}
