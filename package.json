@@ -16,7 +16,7 @@
     "@stytch/react-native": "^0.2.11",
     "@stytch/react-native-modules": "^0.1.1",
     "babel-plugin-inline-dotenv": "^1.7.0",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
     "dotenv": "^16.0.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
