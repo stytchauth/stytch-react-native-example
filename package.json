@@ -23,7 +23,7 @@
     "react-native": "0.69.3",
     "react-native-config": "^1.4.6",
     "react-native-device-info": "^9.0.2",
-    "react-native-gesture-handler": "~2.1.0",
+    "react-native-gesture-handler": "~2.8.0",
     "react-native-keychain": "^8.1.1",
     "react-native-reanimated": "~2.13.0",
     "react-native-safe-area-context": "3.3.2",
