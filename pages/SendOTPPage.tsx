@@ -1,4 +1,3 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
 import {
   Keyboard,
@@ -11,16 +10,10 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {RootStackParamList} from '../App';
 import sharedStyles from './shared';
 import {useStytch} from '@stytch/react-native';
 
-type NavProps = NativeStackScreenProps<RootStackParamList, 'SendOTP'>;
-type Props = NavProps & {
-  setMethodId: (methodId: string) => void;
-};
-
-function SendOTPPage({navigation}: Props) {
+function SendOTPPage({navigation}) {
   const stytch = useStytch();
   const [phoneInput, setPhoneInput] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | undefined>();

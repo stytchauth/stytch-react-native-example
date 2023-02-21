@@ -38,6 +38,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = StytchDemo/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-StytchDemo-StytchDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StytchDemo-StytchDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-StytchDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StytchDemo.debug.xcconfig"; path = "Target Support Files/Pods-StytchDemo/Pods-StytchDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		53857E4D29A56FF800E36F19 /* StytchDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = StytchDemo.entitlements; path = StytchDemo/StytchDemo.entitlements; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-StytchDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StytchDemo.release.xcconfig"; path = "Target Support Files/Pods-StytchDemo/Pods-StytchDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-StytchDemo-StytchDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StytchDemo-StytchDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-StytchDemo-StytchDemoTests/Pods-StytchDemo-StytchDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-StytchDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StytchDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +87,7 @@
 		13B07FAE1A68108700A75B9A /* StytchDemo */ = {
 			isa = PBXGroup;
 			children = (
+				53857E4D29A56FF800E36F19 /* StytchDemo.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -449,7 +451,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = StytchDemo/StytchDemo.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 22B584A5Q6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = StytchDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,7 +479,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = StytchDemo/StytchDemo.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 22B584A5Q6;
 				INFOPLIST_FILE = StytchDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -3,12 +3,28 @@ import sharedStyles from './shared';
 import {useStytch} from '@stytch/react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 
-function ProfilePage() {
+function ProfilePage({route, navigation}) {
   const stytch = useStytch();
 
   const [isKeystoreAvailable, setKeystoreAvailable] = useState(false);
   const [hasBiometricRegistration, setBiometricRegistration] = useState(false);
   const [sensorType, setSensorType] = useState('none');
+
+  useEffect(() => {
+    if (stytch && route.params) {
+      // Facebook adds characters "#_=_" to the end of the redirect url.
+      // If the token is not 44 characters long, slice the token to the correct length.
+      const token = route.params.token.slice(0, 44);
+      stytch.oauth
+        .authenticate(token, {session_duration_minutes: 60})
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+  }, [stytch, route]);
 
   const checkKeystoreAvailable = useCallback(() => {
     stytch.biometrics.isKeystoreAvailable().then(resp => {
@@ -83,6 +99,12 @@ function ProfilePage() {
       });
   };
 
+  const logout = () => {
+    stytch.session.revoke().then(() => {
+      navigation.navigate('Welcome');
+    });
+  };
+
   return (
     <View style={sharedStyles.container}>
       <View>
@@ -127,9 +149,7 @@ function ProfilePage() {
           </View>
         </>
       )}
-      <TouchableOpacity
-        style={[sharedStyles.buttonDark]}
-        onPress={stytch.session.revoke}>
+      <TouchableOpacity style={[sharedStyles.buttonDark]} onPress={logout}>
         <Text style={[sharedStyles.buttonTextDark]}>Logout</Text>
       </TouchableOpacity>
     </View>

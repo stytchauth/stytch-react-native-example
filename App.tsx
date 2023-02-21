@@ -10,23 +10,28 @@ import {
 } from '@stytch/react-native';
 import Config from 'react-native-config';
 
-export type RootStackParamList = {
-  Welcome: undefined;
-  SendOTP: undefined;
-  VerifyOTP: {
-    phoneNumber: string;
-    methodId: string;
-  };
-  Profile: undefined;
+const config = {
+  initialRouteName: 'Welcome',
+  screens: {
+    Welcome: 'Welcome',
+    SendOTP: 'SendOTP',
+    VerifyOTP: 'VerifyOTP',
+    Profile: 'Profile',
+  },
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const linking = {
+  prefixes: ['stytchrn://'],
+  config: config,
+};
+
+const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
   const user = useStytchUser();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
         {user ? (
           <Stack.Screen

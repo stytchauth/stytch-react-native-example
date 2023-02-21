@@ -10,14 +10,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
 import sharedStyles from './shared';
 import {useStytch} from '@stytch/react-native';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'VerifyOTP'>;
-
-function VerifyOTPPage({navigation, route}: Props) {
+function VerifyOTPPage({navigation, route}) {
   const stytch = useStytch();
   const {methodId, phoneNumber} = route.params;
   const [otp, setOtp] = useState('');
