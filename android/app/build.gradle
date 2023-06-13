@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.stytchreactnativeexample"
+    namespace "com.stytch.sdk.rn.example"
     defaultConfig {
-        applicationId "com.stytchreactnativeexample"
+        applicationId "com.stytch.sdk.rn.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -165,6 +165,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+// This is needed for react-native-config to work in Android. See https://github.com/luggit/react-native-config#extra-step-for-android.
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"

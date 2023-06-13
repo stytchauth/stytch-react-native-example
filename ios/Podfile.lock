@@ -413,7 +413,11 @@ PODS:
     - React-jsi (= 0.71.10)
     - React-logger (= 0.71.10)
     - React-perflogger (= 0.71.10)
+  - RNInAppBrowser (3.7.0):
+    - React-Core
   - SocketRocket (0.6.0)
+  - StytchReactNativeModule (0.8.4):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -477,6 +481,8 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
+  - "StytchReactNativeModule (from `../node_modules/@stytch/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -564,6 +570,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNInAppBrowser:
+    :path: "../node_modules/react-native-inappbrowser-reborn"
+  StytchReactNativeModule:
+    :path: "../node_modules/@stytch/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -614,10 +624,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: d13cc2d63286c633393d3a7f6f607cc2a09ec011
   React-runtimeexecutor: a9a1cd79996c9a0846e3232ecb25c64e1cc0172e
   ReactCommon: 65718685d4095d06b4b1af8042e12f1df2925c31
+  RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  StytchReactNativeModule: d5a0c73922673e720bc55cbfc204bb95711c1c8b
   Yoga: e7ea9e590e27460d28911403b894722354d73479
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 1db29b9ccec614c1597e4552e9f4b87fe21a0267
+PODFILE CHECKSUM: e2f8e23996fcdd814c91d0b4e6b4d210426bfca9
 
 COCOAPODS: 1.11.3

@@ -1,4 +1,4 @@
-package com.stytchreactnativeexample;
+package com.stytch.sdk.rn.example;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
