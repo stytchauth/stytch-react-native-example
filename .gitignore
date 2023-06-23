@@ -67,3 +67,6 @@ yarn-error.log
 
 # Secrets
 .env
+
+
+.vscode
