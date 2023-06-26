@@ -1,70 +1,68 @@
-import React from 'react';
-import {ProfilePage, SendOTPPage, VerifyOTPPage, WelcomePage} from './pages';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  StytchClient,
+  OTPScreen,
+  WelcomeScreen,
+  ProfileScreen,
+  EMLScreen,
+  AuthenticateScreen,
+} from "./pages";
+import {
   StytchProvider,
+  StytchClient,
   useStytchUser,
-} from '@stytch/react-native';
-import Config from 'react-native-config';
+} from "@stytch/react-native";
+import Config from "react-native-config";
 
 export type RootStackParamList = {
   Welcome: undefined;
-  SendOTP: undefined;
-  VerifyOTP: {
-    phoneNumber: string;
-    methodId: string;
-  };
+  EML: undefined;
+  OTP: undefined;
   Profile: undefined;
+  Authenticate: { stytch_token_type: string; token: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const HomeScreen = () => {
+export const scheme = "stytchrnexample://";
+
+function App() {
+  const publicToken = Config.STYTCH_PUBLIC_TOKEN ?? "";
+  const stytch = new StytchClient(publicToken);
+
+  return (
+    <StytchProvider stytch={stytch}>
+      <Nav />
+    </StytchProvider>
+  );
+}
+
+function Nav() {
+  const linking = {
+    prefixes: [scheme],
+  };
+
   const user = useStytchUser();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
-        {user ? (
-          <Stack.Screen
-            name="Profile"
-            component={ProfilePage}
-            options={{headerShown: false}}
-          />
+        {user.user == null ? (
+          <>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Authenticate" component={AuthenticateScreen} />
+            <Stack.Screen name="EML" component={EMLScreen} />
+            <Stack.Screen name="OTP" component={OTPScreen} />
+          </>
         ) : (
           <>
-            <Stack.Screen
-              name="Welcome"
-              component={WelcomePage}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="SendOTP"
-              component={SendOTPPage}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="VerifyOTP"
-              component={VerifyOTPPage}
-              options={{headerShown: false}}
-            />
+            <Stack.Screen name="Profile" component={ProfileScreen} />
           </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-const App = () => {
-  const stytch = new StytchClient(Config.STYTCH_PUBLIC_TOKEN);
-  return (
-    <StytchProvider stytch={stytch}>
-      <HomeScreen />
-    </StytchProvider>
-  );
-};
+}
 
 export default App;

@@ -8,45 +8,40 @@ This example app includes a mobile application powered by React Native. This app
 
 This application demonstrates a mobile friendly signup and sign in flow powered by Stytch. In this example the following Stytch products are used:
 
-1. [SMS passcodes](https://stytch.com/products/sms-passcodes)
-2. [Session management](https://stytch.com/products/session-management)
-3. [Biometrics](https://stytch.com/products/mobile-biometrics)
+1. [Email Magic Links](https://stytch.com/products/email-magic-links)
+2. [SMS passcodes](https://stytch.com/products/sms-passcodes)
+3. [OAuth](https://stytch.com/products/oauth)
+4. [Biometrics](https://stytch.com/products/mobile-biometrics)
+5. [Session management](https://stytch.com/products/session-management)
 
 ## Running locally
 
 **Create a Stytch account**
 
-First you will need to sign up and create a new project in [Stytch](https://stytch.com/). Then run the following commands in the terminal of your choice.
+Sign up and create a new project in [Stytch](https://stytch.com).
 
 **Stytch Dashboard Configuration**
 
-You'll need to take some steps in the [Stytch Dashboard SDK Configuration](https://stytch.com/dashboard/sdk-configuration) in order to enable your project to use the SDK.
+Open the [Stytch Dashboard Frontend SDK Configuration](https://stytch.com/dashboard/sdk-configuration).
 
-1. Enable SDK for your project
-2. Add `stytch.rn.test` as a Bundle ID
-3. Enable SMS Passcodes (OTP)
+1. Enable the SDK in your project.
+2. Add `com.stytch.sdk.rn.example` as a Bundle ID.
 
 **Clone repository**
 
 ```bash
-git clone https://github.com/stytchauth/stytch-react-native-integration.git
-cd stytch-react-native-integration
+git clone https://github.com/stytchauth/stytch-react-native-example.git
+cd stytch-react-native-example
 ```
 
-Next we need to create a `.env` file to store our API keys. Modify and run the command below to create a `.env` file. Then update `STYTCH_PUBLIC_TOKEN` with the API key found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
-
-```bash
-# in ./stytch-react-native-integration
-echo "STYTCH_PUBLIC_TOKEN=GET_FROM_STYTCH_DASHBOARD" > .env
-```
+Copy the `.env.template` file and use the public token found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
 
 **Install Dependencies**
 
 ```bash
 npm install
-cd ios
-pod install
-cd ..
+# on iOS
+npx pod-install
 ```
 
 **Start Application**
@@ -54,12 +49,12 @@ cd ..
 Note that your development environment must be configured to run react native applications before you can run this demo. For more information, see the [React Native docs](https://reactnative.dev/docs/environment-setup) for environment setup.
 
 ```bash
-react-native run-ios|android
+# open on iOS
+npm run ios
+# or on Android
+npm run android
 ```
 
 ## Documentation
 
-Learn more about the Stytch products used in this example app:
-
-- [SMS OTP API documentation](https://stytch.com/docs/api/sms-otp-overview)
-- [React Native SDK](https://stytch.com/docs/sdks/react-native-sdk)
+Learn more about the [React Native SDK](https://stytch.com/docs/sdks/react-native-sdk).
