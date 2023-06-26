@@ -429,7 +429,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
-  - StytchReactNativeModule (0.8.4):
+  - StytchReactNativeModule (0.8.8):
     - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -651,7 +651,7 @@ SPEC CHECKSUMS:
   RNInAppBrowser: 62fcb010abfb6769169532e6c7069b5e9ac76b1b
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  StytchReactNativeModule: d5a0c73922673e720bc55cbfc204bb95711c1c8b
+  StytchReactNativeModule: 3ac5fd8e93bbcde65dca10583aae47178762f951
   Yoga: e7ea9e590e27460d28911403b894722354d73479
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
