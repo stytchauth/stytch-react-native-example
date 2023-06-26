@@ -423,7 +423,7 @@ PODS:
     - React-jsi (= 0.71.10)
     - React-logger (= 0.71.10)
     - React-perflogger (= 0.71.10)
-  - RNInAppBrowser (3.7.0):
+  - RNInAppBrowser (3.7.1):
     - React-Core
   - RNScreens (3.20.0):
     - React-Core
@@ -496,7 +496,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
+  - "RNInAppBrowser (from `../node_modules/@stytch/react-native-inappbrowser-reborn`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - "StytchReactNativeModule (from `../node_modules/@stytch/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -591,7 +591,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNInAppBrowser:
-    :path: "../node_modules/react-native-inappbrowser-reborn"
+    :path: "../node_modules/@stytch/react-native-inappbrowser-reborn"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   StytchReactNativeModule:
@@ -648,7 +648,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: d13cc2d63286c633393d3a7f6f607cc2a09ec011
   React-runtimeexecutor: a9a1cd79996c9a0846e3232ecb25c64e1cc0172e
   ReactCommon: 65718685d4095d06b4b1af8042e12f1df2925c31
-  RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
+  RNInAppBrowser: 62fcb010abfb6769169532e6c7069b5e9ac76b1b
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   StytchReactNativeModule: d5a0c73922673e720bc55cbfc204bb95711c1c8b
