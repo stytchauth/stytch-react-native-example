@@ -25,7 +25,10 @@ Sign up and create a new project in [Stytch](https://stytch.com).
 Open the [Stytch Dashboard Frontend SDK Configuration](https://stytch.com/dashboard/sdk-configuration).
 
 1. Enable the SDK in your project.
-2. Add `com.stytch.sdk.rn.example` as a Bundle ID.
+2. Add `com.stytch.rn.example` as a Bundle ID.
+
+Open the [Stytch Dashboard Redirect URLS](https://stytch.com/dashboard/redirect-urls).
+1. Add `stytchrnexample://Authenticate` and select "Login" and "Signup" as URL Types.   
 
 **Clone repository**
 
@@ -34,7 +37,7 @@ git clone https://github.com/stytchauth/stytch-react-native-example.git
 cd stytch-react-native-example
 ```
 
-Copy the `.env.template` file and use the public token found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys).
+Copy the `.env.template` file into `.env.local`. Set the public token found in your Stytch [project dashboard](https://stytch.com/dashboard/api-keys) in the local copy.
 
 **Install Dependencies**
 
@@ -54,6 +57,14 @@ npm run ios
 # or on Android
 npm run android
 ```
+
+**Running the Application**
+1. Email Magic Links: Make sure to log in to the associated email account on the device's browser. The redirect will only work on the same device.
+2. Biometrics: Once you log in with a different authentication flow, you can add Biometrics as a log in option. You will see a "Add Biometrics Registration" button once you're logged in. Once you press it and are taken back to the home page, you can press "Login with Biometrics" at which point the Fingerprint prompt will appear. You can navigate to the `Features` tab of your navigation window then press `Touch ID` and `Matching Touch` to complete the Fingerprint authentication. Then you will be logged in.
+
+**Troubleshooting**
+1. If for some reason the local file is not registered, you can try setting the token directly in `App.tsx` during local testing.
+2. If you get build errors for your iOS app related to Flipper Configurations, you can try directly setting `flipper_config = FlipperConfiguration.disabled` in `ios/Podfile`. 
 
 ## Documentation
 
