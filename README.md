@@ -60,7 +60,7 @@ npm run android
 
 **Running the Application**
 1. Email Magic Links: Make sure to log in to the associated email account on the device's browser. The redirect will only work on the same device.
-2. Biometrics: Once you log in with a different authentication flow, you can add Biometrics as a log in option. You will see a "Add Biometrics Registration" button once you're logged in. Once you press it and are taken back to the home page, you can press "Login with Biometrics" at which point the Fingerprint prompt will appear. You can navigate to the `Features` tab of your navigation window then press `Touch ID` and `Matching Touch` to complete the Fingerprint authentication. Then you will be logged in.
+2. Biometrics: Once you log in for the first time, you can add Biometrics as a login option. You will see a "Add Biometrics Registration" button, click it and you'll be taken back to the home page where you can press "Login with Biometrics" at which point the Fingerprint prompt will appear. You can navigate to the `Features` tab of your navigation window then press `Touch ID` and `Matching Touch` to complete the Fingerprint authentication. Then you will be logged in.
 
 **Troubleshooting**
 1. If for some reason the local file is not registered, you can try setting the token directly in `App.tsx` during local testing.
