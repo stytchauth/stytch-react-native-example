@@ -24,7 +24,6 @@ const Welcome = ({ navigation }: Props) => {
     stytch.biometrics.authenticate({
       sessionDurationMinutes: 60,
       prompt: "Login to Stytch",
-      allowDeviceCredentials: true,
     });
   };
 

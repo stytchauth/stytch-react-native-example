@@ -13,7 +13,6 @@ import {
   StytchClient,
   useStytchUser,
 } from "@stytch/react-native";
-import Config from "react-native-config";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -28,7 +27,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export const scheme = "stytchrnexample://";
 
 function App() {
-  const publicToken = Config.STYTCH_PUBLIC_TOKEN ?? "";
+  const publicToken = process.env.STYTCH_PUBLIC_TOKEN ?? "";
   const stytch = new StytchClient(publicToken);
 
   return (
