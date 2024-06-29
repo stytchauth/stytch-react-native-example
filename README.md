@@ -37,14 +37,14 @@ git clone https://github.com/stytchauth/stytch-react-native-example.git
 cd stytch-react-native-example
 ```
 
-Copy the `.env.template` file into `.env.local`. Set the `public_token` found in your [Stytch Dashboard](https://stytch.com/dashboard/api-keys) in the local copy.
+Copy the `.env.template` file into `.env`. Set the `public_token` found in your [Stytch Dashboard](https://stytch.com/dashboard/api-keys) in the local copy.
 
 **Install Dependencies**
 
 ```bash
 npm install
 # on iOS
-npx pod-install
+cd ios && pod install
 ```
 
 **Start Application**

@@ -10,8 +10,6 @@ const Profile = () => {
   const registerBiometrics = () => {
     stytch.biometrics.register({
       prompt: "Register Your Biometric Factor",
-      allowDeviceCredentials: true,
-      allowFallbackToCleartext: true,
     });
   };
 
