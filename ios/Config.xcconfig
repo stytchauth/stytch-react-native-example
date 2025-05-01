@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  StytchReactNativeExample
+//
+//  Created by Jordan Haven on 4/30/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+#include? "tmp.xcconfig"

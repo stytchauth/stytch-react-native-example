@@ -23,9 +23,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>stytchrnexample</string>
+				<string>stytch-ui-${STYTCH_PUBLIC_TOKEN}</string>
 			</array>
 		</dict>
 	</array>
@@ -35,7 +37,6 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
@@ -57,7 +58,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Login with Stytch Biometrics</string>
 </dict>
 </plist>

@@ -76,5 +76,7 @@ yarn-error.log
 # Secrets
 .env
 
+ios/tmp.xcconfig
+
 
 .vscode
